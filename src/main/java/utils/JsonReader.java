@@ -21,7 +21,11 @@ public class JsonReader {
     static String readFile(String path, Charset encoding)
             throws IOException
     {
-        byte[] encoded = Files.readAllBytes(Paths.get(path.substring(1)));
+        String pathCustom = path;
+        if(path.startsWith("/")){
+            pathCustom = path.substring(1);
+        }
+        byte[] encoded = Files.readAllBytes(Paths.get(pathCustom));
         return new String(encoded, encoding);
     }
 
