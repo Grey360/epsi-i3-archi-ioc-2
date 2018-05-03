@@ -1,9 +1,11 @@
 package utils;
 
+import epsi.archi.ioc2.Movie;
 import epsi.archi.ioc2.MovieService;
 
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,13 +13,14 @@ import java.util.Scanner;
  */
 public class UserInput {
 
-    public UserInput(){
+    public UserInput() {
         this.welcomeMessage();
     }
 
-    public static void welcomeMessage(){
+    public static void welcomeMessage() {
         System.out.println("\t\t\t\tWelcome to the MOVIES SEARCH ENGINE! (Powered by Java)");
     }
+
     /**
      * We get the realisator
      *
@@ -42,14 +45,25 @@ public class UserInput {
                 "\n\t\t- 08, as month" +
                 "\n\t\t- 01, as day");
 
-        service.searchByRealisatorAndAfter(realisator, LocalDate.of(catchYear(), catchMonth(), catchDay()))
-                .forEach(m -> {
-                    if (m.toString().isEmpty()) {
-                        System.out.println("This movie is not in our database! :/");
-                    } else {
-                        System.out.println(m);
-                    }
-                });
+        List<Movie> listMovies = service.searchByRealisatorAndAfter(realisator, LocalDate.of(catchYear(), catchMonth(), catchDay()));
+        if(listMovies.size() > 0){
+            listMovies.forEach(m -> {
+                System.out.println(
+                        "----------------------------"
+                        + "\n\tRealisator: " + m.getRealisator()
+                        + "\n\tTitle: " + m.getTitle()
+                        + "\n\tRelease Date: " + m.getReleaseDate()
+                        + "\n\tCategory: " + m.getCategory()
+                        + "\n\tDuration: " + m.getDuration()
+                        + "\n\tExploitation number: " + m.getExploitationNumber()
+                        + "\n----------------------------"
+                );
+            });
+        } else {
+            System.out.println("\n\tThis movie is not in our database! :/");
+        }
+
+
     }
 
     /**
@@ -59,7 +73,7 @@ public class UserInput {
      */
     public static int catchYear() {
         int year = 0;
-        String warning = "INPUT A VALID MONTH YEAR, PLEASE!";
+        String warning = "\nINPUT A VALID MONTH YEAR, PLEASE!";
         try {
             System.out.print("Year: ");
             year = Integer.parseInt(new Scanner(System.in).nextLine());
@@ -82,7 +96,7 @@ public class UserInput {
      */
     public static int catchMonth() {
         int month = 0;
-        String warning = "INPUT A VALID MONTH NUMBER, PLEASE!";
+        String warning = "\nINPUT A VALID MONTH NUMBER, PLEASE!";
         try {
             System.out.print("Month: ");
             month = Integer.parseInt(new Scanner(System.in).nextLine());
@@ -105,7 +119,7 @@ public class UserInput {
      */
     public static int catchDay() {
         int day = 0;
-        String warning = "INPUT A VALID DAY NUMBER, PLEASE!";
+        String warning = "\nINPUT A VALID DAY NUMBER, PLEASE!";
         try {
             System.out.print("Day: ");
             day = Integer.parseInt(new Scanner(System.in).nextLine());
