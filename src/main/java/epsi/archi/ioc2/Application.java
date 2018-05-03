@@ -15,8 +15,7 @@ public class Application {
         MovieService service = factory.create();
 
         UserInput userInput = new UserInput();
-        userInput.catchDate(service, userInput.catchRealisator());
+        userInput.choice(service);
+        // userInput.catchDate(service, userInput.catchRealisator());
     }
-
-
 }

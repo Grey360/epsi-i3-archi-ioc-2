@@ -17,6 +17,27 @@ public class UserInput {
         this.welcomeMessage();
     }
 
+    public void choice(MovieService service){
+        int choice = 0;
+        System.out.println(
+                "\n\tWhat do you want to do?"
+                + "\n\t\t1 - Add a movie to the list."
+                + "\n\t\t2 - Read a movie description from the list."
+                + "\n\t\t3 - Update a movie description in the list."
+                + "\n\t\t4 - Release a movie from the list."
+        );
+        choice = Integer.parseInt(new Scanner(System.in).nextLine());
+
+        switch (choice){
+            case 2:
+                this.catchDate(service, new UserInput().catchRealisator());
+                break;
+            default:
+                System.out.println("The feature is in development...");
+                break;
+        }
+    }
+
     public static void welcomeMessage() {
         System.out.println("\n\t\t\t\tWelcome to the MOVIES SEARCH ENGINE! (Powered by Java)");
     }
@@ -26,7 +47,7 @@ public class UserInput {
      *
      * @return
      */
-    public static String catchRealisator() {
+    public String catchRealisator() {
         System.out.print("\n\tFirst, give us the name of a realisator, please: ");
         return new Scanner(System.in).nextLine();
     }
@@ -38,7 +59,7 @@ public class UserInput {
      * @param service    MovieService
      * @param realisator String
      */
-    public static void catchDate(MovieService service, String realisator) {
+    public void catchDate(MovieService service, String realisator) {
         System.out.println("\n\tNow, a date using the following format, please: YYYY-MM-DD" +
                 "\n\n\tFor instance:" +
                 "\n\t\t- 1995, as year" +
@@ -58,14 +79,23 @@ public class UserInput {
                         + "\n\tExploitation number: " + m.getExploitationNumber()
                         + "\n----------------------------"
                 );
+                continueInput(service);
             });
         } else {
-            System.out.println("\n\tThis movie is not in our database! :/");
+            System.out.println("\n\tNo movie matches this search! (Try another realisator or using an earlier date.) :/");
+            continueInput(service);
         }
-
-
     }
 
+    public void continueInput(MovieService service){
+        System.out.print("\n\tDo you wish to continue? (Y or N)");
+        if(new Scanner(System.in).nextLine().equals("Y")){
+            UserInput userInput = new UserInput();
+            userInput.choice(service);
+        } else {
+            System.out.println("Bye!");
+        }
+    }
     /**
      * We set the year
      *
