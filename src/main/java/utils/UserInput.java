@@ -18,7 +18,7 @@ public class UserInput {
     }
 
     public static void welcomeMessage() {
-        System.out.println("\t\t\t\tWelcome to the MOVIES SEARCH ENGINE! (Powered by Java)");
+        System.out.println("\n\t\t\t\tWelcome to the MOVIES SEARCH ENGINE! (Powered by Java)");
     }
 
     /**
@@ -39,8 +39,8 @@ public class UserInput {
      * @param realisator String
      */
     public static void catchDate(MovieService service, String realisator) {
-        System.out.println("\nNow, a date using the following format, please: YYYY-MM-DD" +
-                "\n\tFor instance:" +
+        System.out.println("\n\tNow, a date using the following format, please: YYYY-MM-DD" +
+                "\n\n\tFor instance:" +
                 "\n\t\t- 1995, as year" +
                 "\n\t\t- 08, as month" +
                 "\n\t\t- 01, as day");
@@ -73,9 +73,9 @@ public class UserInput {
      */
     public static int catchYear() {
         int year = 0;
-        String warning = "\nINPUT A VALID MONTH YEAR, PLEASE!";
+        String warning = "\n\t\tINPUT A VALID MONTH YEAR, PLEASE!";
         try {
-            System.out.print("Year: ");
+            System.out.print("\t\tYear: ");
             year = Integer.parseInt(new Scanner(System.in).nextLine());
 
         } catch (NumberFormatException exception) {
@@ -96,9 +96,9 @@ public class UserInput {
      */
     public static int catchMonth() {
         int month = 0;
-        String warning = "\nINPUT A VALID MONTH NUMBER, PLEASE!";
+        String warning = "\n\t\tINPUT A VALID MONTH NUMBER, PLEASE!";
         try {
-            System.out.print("Month: ");
+            System.out.print("\t\tMonth: ");
             month = Integer.parseInt(new Scanner(System.in).nextLine());
         } catch (NumberFormatException exception) {
             System.out.println(warning);
@@ -121,7 +121,7 @@ public class UserInput {
         int day = 0;
         String warning = "\nINPUT A VALID DAY NUMBER, PLEASE!";
         try {
-            System.out.print("Day: ");
+            System.out.print("\t\tDay: ");
             day = Integer.parseInt(new Scanner(System.in).nextLine());
         } catch (NumberFormatException exception) {
             System.out.println(warning);
