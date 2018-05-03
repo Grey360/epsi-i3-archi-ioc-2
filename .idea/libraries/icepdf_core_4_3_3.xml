@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="icepdf-core-4.3.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../PDF_Java/lib/icepdf-core-4.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PDF_Java/lib/icepdf-viewer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../PDF_Java/lib/icepdf-viewer.jar!/" />
+    </SOURCES>
+  </library>
+</component>
